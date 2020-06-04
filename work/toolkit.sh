@@ -51,9 +51,8 @@ toolkit::setup::config() {
 	local -r config_path="${destination}/.config/nvidia-container-runtime/config.toml"
 	log INFO "${FUNCNAME[0]} $*"
 
-	sed -i 's/^#root/root/;' "${config_path}"
 	sed -i "s@/run/nvidia/driver@${RUN_DIR}/driver@;" "${config_path}"
-	sed -i "s;@/sbin/ldconfig.real;@${RUN_DIR}/driver/sbin/ldconfig.real;" "${config_path}"
+	sed -i "s;@/sbin/ldconfig.real;@/sbin/ldconfig;" "${config_path}"
 }
 
 toolkit::setup::cli_binary() {
