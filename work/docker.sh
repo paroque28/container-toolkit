@@ -141,6 +141,8 @@ docker::setup() {
 
 	docker::config::backup
 	echo "${updated_config}" > /etc/docker/daemon.json
+	install -m 644 l4t.csv /etc/nvidia-container-runtime/host-files-for-container.d/
+	install -m 644 cuda-core.csv /etc/nvidia-container-runtime/host-files-for-container.d/
 	docker::config::refresh
 }
 
